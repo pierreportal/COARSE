@@ -1,9 +1,10 @@
-import { Gpio } from 'onoff';
 import React from 'react';
+import { Gpio } from 'onoff';
 import { IGpioInputPin } from '../types';
 import { connect } from '../utils/pinsMap'
 
-export const useClock = (cb: (value: number) => void, mock?: boolean) => {
+export const useClock = (cb: (value?: number) => void, mock?: boolean) => {
+
   const clockRef = React.useRef<Gpio | IGpioInputPin | null>(connect(mock).serials.inputs.CLOCK);
 
   React.useEffect(() => {

@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'ink';
 import meow from 'meow';
 import App from './ui';
+import { MainProvider } from './context/index';
 
 const cli = meow(`
 	Usage
@@ -22,4 +23,10 @@ const cli = meow(`
   }
 });
 
-render(<App mock={cli.flags.mock} />);
+console.clear();
+
+render(
+  <MainProvider>
+    <App mock={cli.flags.mock} />
+  </MainProvider>
+);

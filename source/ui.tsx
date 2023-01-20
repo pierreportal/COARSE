@@ -1,8 +1,7 @@
 import React from 'react';
-import { Text } from 'ink';
 import { connect } from './utils/pinsMap';
-import { useClock } from './hooks/useClock';
-import { ISerials } from './types';
+import { useMainContext } from './context';
+import { Dashboard } from './components/Dashboard';
 
 interface IAppProps {
   mock: boolean | undefined;
@@ -10,26 +9,16 @@ interface IAppProps {
 
 const App: React.FC<IAppProps> = ({ mock }) => {
 
-  const serials = React.useRef<ISerials>();
+  const { setSerials, setIsMock } = useMainContext();
 
   React.useEffect(() => {
     const { unexportOnClose, serials: _serials } = connect(mock);
-    serials.current = _serials;
+    setSerials(_serials);
+    setIsMock(mock);
     return unexportOnClose;
   }, []);
 
-  //TODO: Need a context wrapper to store serials
-
-  useClock((value: number) => {
-    console.log('value: ', value, mock);
-  }, mock);
-
-  return (
-
-    <Text>
-      Hello
-    </Text>
-  )
+  return <Dashboard />;
 }
 
 
