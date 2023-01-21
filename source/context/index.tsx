@@ -9,7 +9,7 @@ interface IAppProviderProps {
 export const MainProvider: React.FC<IAppProviderProps> = ({ children }) => {
 
   const [serials, setSerials] = React.useState({});
-  const [isMock, setIsMock] = React.useState(true); // to change to false by default and fix clock
+  const [isMock, setIsMock] = React.useState(false); // to change to false by default and fix clock
   const [beatsPerBar, setBeatsPerBar] = React.useState(4);
 
   return (

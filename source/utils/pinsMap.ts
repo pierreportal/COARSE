@@ -26,7 +26,7 @@ export const connect = (mock: boolean | undefined) => {
       },
       inputs: {
         //TODO: Add inputs CV_IN, RESET
-        CLOCK: new Gpio(4, 'in'),
+        CLOCK: new Gpio(4, 'in', 'both'),
       },
     }
 
